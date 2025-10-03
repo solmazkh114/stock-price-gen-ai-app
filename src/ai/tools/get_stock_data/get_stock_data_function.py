@@ -1,10 +1,10 @@
 import yfinance as yf
 from datetime import datetime, timedelta
-from input_output_types import GetStockDataInput, GetStockDataOutput
+from .input_output_types import GetStockDataInput, GetStockDataOutput
 from loguru import logger
 
 
-def get_stock_data(input: GetStockDataInput) -> GetStockDataOutput:
+def get_stock_data_function(input: GetStockDataInput) -> GetStockDataOutput:
     stock = yf.Ticker(input.ticker)
     # Convert number of days to yfinance period format
     period = f"{input.number_of_days}d"

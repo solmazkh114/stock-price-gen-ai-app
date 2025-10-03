@@ -1,5 +1,5 @@
 import yfinance as yf
-from input_output_types import MovingAverageInput, MovingAverageOutput
+from .input_output_types import MovingAverageInput, MovingAverageOutput
 from loguru import logger
 
 
