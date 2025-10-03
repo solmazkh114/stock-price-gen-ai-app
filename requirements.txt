@@ -1,0 +1,4 @@
+langgraph=0.6.8
+langchain=0.3.27
+pydantic-ai=1.0.13
+yfinance=0.2.66
