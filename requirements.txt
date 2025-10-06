@@ -5,4 +5,5 @@ yfinance==0.2.66
 fastapi==0.117.1
 uvicorn[standard]
 loguru==0.7.3
-
+dotenv==0.9.9
+langchain-openai==0.3.34
