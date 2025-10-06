@@ -13,7 +13,8 @@ from .input_output_types import (
 
 # Import functions
 from .moving_average_function import (
-    moving_average_function
+    moving_average_tool_function,
+    moving_average_tool_node
 )
 
 # Define what gets exported when using "from stock_data_analysis import *"
@@ -22,5 +23,6 @@ __all__ = [
     "MovingAverageInput",
     "MovingAverageOutput",
     # Functions
-    "moving_average_function"
+    "moving_average_tool_function",
+    "moving_average_tool_node"
 ]

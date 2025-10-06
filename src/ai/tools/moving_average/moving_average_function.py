@@ -1,9 +1,14 @@
 import yfinance as yf
 from .input_output_types import MovingAverageInput, MovingAverageOutput
+from langchain.tools import tool
+from langgraph.prebuilt import ToolNode
 from loguru import logger
 
 
-def moving_average_function(input: MovingAverageInput) -> MovingAverageOutput:
+@tool
+def moving_average_tool_function(input: MovingAverageInput) -> MovingAverageOutput:
+    """Calculate moving averages for stock data from Yahoo Finance."""
+    logger.info("moving average tool is called")
     stock = yf.Ticker(input.ticker)
     # Convert number of days to yfinance period format
     period = f"{input.years_back}y"
@@ -37,5 +42,7 @@ def moving_average_function(input: MovingAverageInput) -> MovingAverageOutput:
         ticker=input.ticker,
         values=values
     )
+
+moving_average_tool_node = ToolNode([moving_average_tool_function])
 
 #print(moving_average_function(MovingAverageInput(ticker="AAPL", window_size=5, data_type=["close", "open"], years_back=2)))

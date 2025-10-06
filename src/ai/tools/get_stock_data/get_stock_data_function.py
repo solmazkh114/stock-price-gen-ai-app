@@ -1,10 +1,13 @@
 import yfinance as yf
-from datetime import datetime, timedelta
+from langchain.tools import tool
+from langgraph.prebuilt import ToolNode
 from .input_output_types import GetStockDataInput, GetStockDataOutput
 from loguru import logger
 
-
-def get_stock_data_function(input: GetStockDataInput) -> GetStockDataOutput:
+@tool
+def get_stock_data_tool_function(input: GetStockDataInput) -> GetStockDataOutput:
+    """Fetch historical stock data from Yahoo Finance."""
+    logger.info("get stock data tool is called")
     stock = yf.Ticker(input.ticker)
     # Convert number of days to yfinance period format
     period = f"{input.number_of_days}d"
@@ -14,7 +17,6 @@ def get_stock_data_function(input: GetStockDataInput) -> GetStockDataOutput:
         raise ValueError("No data found")
     
     logger.info("data fetched for {ticker} for period {period}", ticker=input.ticker, period=period)
-
 
     if type(input.data_type)== str:
         input.data_type = [input.data_type]
@@ -28,10 +30,10 @@ def get_stock_data_function(input: GetStockDataInput) -> GetStockDataOutput:
             daily_dict[dtype] = round(float(hist.iloc[-day][dtype.capitalize()]), 2)
         values.append(daily_dict)
 
-    print("values:\n",values)
+    logger.info(f"values:\n{values}")
     return GetStockDataOutput(
         ticker=input.ticker,
         values=values
     )
 
-#print(get_stock_data(StockRequest(ticker="AAPL",  data_type=["close", "open"], number_of_days=5)))
+get_stock_data_tool_node = ToolNode([get_stock_data_tool_function])

@@ -13,7 +13,8 @@ from .input_output_types import (
 
 # Import functions
 from .get_stock_data_function import (
-    get_stock_data_function,
+    get_stock_data_tool_function,
+    get_stock_data_tool_node
 )
 
 __all__ = [
@@ -21,6 +22,7 @@ __all__ = [
     "GetStockDataInput",
     "GetStockDataOutput", 
     # Functions
-    "get_stock_data_function",
+    "get_stock_data_tool_function",
+    "get_stock_data_tool_node"
 
 ]
