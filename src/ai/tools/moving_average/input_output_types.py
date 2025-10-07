@@ -19,7 +19,7 @@ class MovingAverageInput(BaseModel):
                                   for the analysis. Defaults to 1 year.
         data_type (Union[str, List[str]]): Type(s) of price data to analyze.
                                          Can be a single value or list of values.
-                                         Valid options: 'open', 'High', 'Low', 'close'.
+                                         Valid options: 'open', 'high', 'low', 'close'.
                                          This is a required field.
     
     Examples:
@@ -33,8 +33,8 @@ class MovingAverageInput(BaseModel):
     window_size: int = Field(default=7, description="Window size for moving average (e.g., 5, 10, 20)")
     years_back: int = Field(default=1, description="Number of years to look back for fetching data")
     data_type: Union[
-        Literal["open", "High", "Low", "close"], 
-        List[Literal["open", "High", "Low", "close"]]
+        Literal["open", "high", "low", "close"], 
+        List[Literal["open", "high", "low", "close"]]
     ] = Field(..., description="Type of price to fetch - can be a single value or list of values")
 
 

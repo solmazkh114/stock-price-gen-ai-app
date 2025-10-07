@@ -5,8 +5,8 @@ from typing import Literal, Union, List, Dict, Any
 class GetStockDataInput(BaseModel):
     ticker: str = Field(..., description="Stock ticker symbol, e.g., AAPL")
     data_type: Union[
-        Literal["open", "High", "Low", "close"], 
-        List[Literal["open", "High", "Low", "close"]]
+        Literal["open", "high", "low", "close"], 
+        List[Literal["open", "high", "low", "close"]]
     ] = Field(..., description="Type of price to fetch - can be a single value or list of values")
     number_of_days: int = Field(..., description="Number of days to look back (1-30)")
 
