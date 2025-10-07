@@ -17,4 +17,5 @@ def agent_function(state: AgentState):
     logger.info("Agent is called")
     messages = state["messages"]
     response = llm_with_tools.invoke(messages)
+    logger.info(f"Agent response: {response}")
     return {"messages": [response]}
