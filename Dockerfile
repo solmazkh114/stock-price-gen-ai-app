@@ -1,6 +1,8 @@
 
 # build this file with: docker build -t stock-price-assistant:1.0 .
-# run the container with: docker run --name stock-price-assistant-container -p 8000:8000 --env-file .env stock-price-assistant:1.0
+# create and run the container with: docker run --name stock-price-assistant-container -p 8000:8000 --env-file .env stock-price-assistant:1.0
+# start container with: docker start stock-price-assistant-container
+# to see real-time logs after starting the container: docker logs -f stock-price-assistant-container
 # stop container with: docker stop stock-price-assistant-container
 # remove container with: docker rm stock-price-assistant-container
 # 1. Base image
