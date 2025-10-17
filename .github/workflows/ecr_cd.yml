@@ -9,7 +9,7 @@ env:
   ECR_REPOSITORY: stock-price-assistant
   ECS_SERVICE: stock-price-assistant-service                 
   ECS_CLUSTER: stock-price-cluster              
-  ECS_TASK_DEFINITION: stock-price-assistant-task 
+  ECS_TASK_DEFINITION: stock-price-assistant-task:1 
                                               
   CONTAINER_NAME: stock-price-assistant-container # to find this in task in AWS ECS console, click on the task, you can see name of container in the container section          
                                             
