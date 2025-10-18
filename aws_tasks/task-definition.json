@@ -30,7 +30,7 @@
             "secrets": [
                 {
                     "name": "OPENAI_API_KEY",
-                    "valueFrom": "arn:aws:secretsmanager:us-east-2:045367460786:secret:openai-api-key:OPENAI_API_KEY::"
+                    "valueFrom": "arn:aws:secretsmanager:us-east-2:045367460786:secret:stock-price-assistant/openai:OPENAI_API_KEY::"
                 }
             ],
             "systemControls": [],
