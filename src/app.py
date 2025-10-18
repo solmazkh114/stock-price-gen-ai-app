@@ -18,4 +18,10 @@ app.add_middleware(
 )
 
 logger.info("Defining routes...")
+
+@app.get("/health")
+async def health_check():
+    """Health check endpoint for load balancer"""
+    return {"status": "healthy", "service": "stock-price-assistant"}
+
 app.include_router(assistant_chat_router, prefix="")
