@@ -10,18 +10,19 @@ do
   esac
 done
 
-# get highest tag number, and add v0.1.0 if doesn't exist
-git fetch --prune --unshallow --tags 2>/dev/null
+# get highest tag number, and add v0.0.0 if doesn't exist
+git fetch --prune --tags 2>/dev/null
 CURRENT_VERSION=`git describe --abbrev=0 --tags 2>/dev/null`
 
 if [[ $CURRENT_VERSION == '' ]]
 then
-  CURRENT_VERSION='v0.1.0'
+  CURRENT_VERSION='v0.0.0'
 fi
 echo "Current Version: $CURRENT_VERSION"
 
-# replace . with space so can split into an array
-CURRENT_VERSION_PARTS=(${CURRENT_VERSION//./ })
+# remove 'v' prefix and replace . with space so can split into an array
+CURRENT_VERSION_STRIPPED=${CURRENT_VERSION#v}
+CURRENT_VERSION_PARTS=(${CURRENT_VERSION_STRIPPED//./ })
 
 # get number parts
 VNUM1=${CURRENT_VERSION_PARTS[0]}
