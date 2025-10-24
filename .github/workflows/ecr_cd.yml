@@ -22,8 +22,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 0  # Fetch all history including tags for proper versioning
 
     - name: Configure AWS credentials # log in to AWS using secrets
       uses: aws-actions/configure-aws-credentials@v3 #v3 is the last version, earlier ones are about to be deprecated
