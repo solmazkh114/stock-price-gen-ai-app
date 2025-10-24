@@ -11,8 +11,8 @@ do
 done
 
 # get highest tag number, and add v0.0.0 if doesn't exist
-git fetch --prune --tags 2>/dev/null
-CURRENT_VERSION=`git describe --abbrev=0 --tags 2>/dev/null`
+git fetch --prune --unshallow --tags 2>/dev/null
+CURRENT_VERSION=`git describe --abbrev=0 2>/dev/null`
 
 if [[ $CURRENT_VERSION == '' ]]
 then
@@ -31,7 +31,7 @@ VNUM3=${CURRENT_VERSION_PARTS[2]}
 
 if [[ $VERSION == 'major' ]]
 then
-  VNUM1=v$((VNUM1+1))
+  VNUM1=$((VNUM1+1))
 elif [[ $VERSION == 'minor' ]]
 then
   VNUM2=$((VNUM2+1))
@@ -61,6 +61,6 @@ else
   echo "Already a tag on this commit"
 fi
 
-echo ::set-output name=git-tag::$NEW_TAG
+echo "git-tag=$NEW_TAG" >> $GITHUB_OUTPUT
 
 exit 0

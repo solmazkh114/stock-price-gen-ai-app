@@ -4,6 +4,9 @@ on:
   push:
     branches: [ master ] # trigger workflow when pushing to master branch
 
+permissions:
+  contents: write  # Allow the workflow to push tags and commits
+  
 env:
   AWS_REGION: us-east-2
   ECR_REPOSITORY: stock-price-assistant
@@ -23,8 +26,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0
-        fetch-tags: true
+        fetch-depth: 0  # Fetch full history for proper tagging
+    #     token: ${{ secrets.GITHUB_TOKEN }}
+
+    # - name: Configure Git
+    #   run: |
+    #     git config --global user.name "github-actions[bot]"
+    #     git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
     - name: Configure AWS credentials # log in to AWS using secrets
       uses: aws-actions/configure-aws-credentials@v3 #v3 is the last version, earlier ones are about to be deprecated
