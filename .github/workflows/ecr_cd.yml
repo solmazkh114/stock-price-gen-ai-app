@@ -5,7 +5,7 @@ on:
     branches: [ master ] # trigger workflow when pushing to master branch
 
 permissions:
-  contents: write  # Allow the workflow to push tags and commits
+  contents: write  # Allow the workflow to push tags and commits. need this permission for tagging purposes. Do not need this if you want to go with latest tagging!
   
 env:
   AWS_REGION: us-east-2
